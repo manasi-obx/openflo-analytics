@@ -79,6 +79,26 @@ function maxFlowsInCurrentMonth (flows, bID) {
    return noOfFlowsInMonth;
 }
 
+function astContractUrl(flows) {
+    let astUrl = flows.map(flow => {
+        return flow.ast_contract_url
+    })
+    let url = astUrl.filter(url => {
+        return url;
+    })  
+    return url
+}
+
+function nhaContractUrl(flows) {
+    let nhaUrl = flows.map(flow => {
+        return flow.nha_contract_url
+    })
+    let url = nhaUrl.filter(url => {
+        return url; 
+    })  
+    return url
+}
+
 
 
 
@@ -88,5 +108,7 @@ module.exports = {
     propertyWithFlows,
     noOfFlowsWithProperties,
     branchWithMaxFlows,
-    maxFlowsInCurrentMonth
+    maxFlowsInCurrentMonth,
+    astContractUrl,
+    nhaContractUrl
 }
