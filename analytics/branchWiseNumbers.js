@@ -143,6 +143,34 @@ function valPerFlow (flows, prop, branchId) {
         return avg.toFixed(2)
 }
 
+function flowInCurrentMonth (flows,prop,branchId) {
+    let flowsCreated = flows.filter(flow => {
+        if(flow.branch_id === branchId) {
+            let d = flow[prop];
+            d = new Date(d);
+            let year = d.getFullYear();
+            let month = d.getMonth();
+            let today = new Date();
+            let currentYear =today.getFullYear();
+            let currenmonth =today.getMonth();
+            return (year == currentYear && month == currenmonth)
+        }
+    })
+    return flowsCreated.length;
+}
+
+
+function returnUrl (flows, prop, branchId) {
+    let url = flows.map(flow => {
+        if (flow.branch_id === branchId) {
+            return flow[prop];
+        }
+    })
+    let urltoreturn = url.filter (url => { 
+        return url;
+    })
+    return urltoreturn;
+}
 
 
 module.exports = {
@@ -158,5 +186,7 @@ module.exports = {
     furnishedProperty,
     certificates,
     average,
-    valPerFlow
+    valPerFlow,
+    flowInCurrentMonth,
+    returnUrl
 }
